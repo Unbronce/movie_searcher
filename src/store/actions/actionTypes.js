@@ -1,2 +1,5 @@
 export const INITIATE_MOVIES = "INITIATE_MOVIES";
 export const SET_MOVIES = "SET_MOVIES";
+
+export const INITIATE_ACTORS = "INITIATE_ACTORS";
+export const SET_ACTORS = "SET_ACTORS";

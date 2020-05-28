@@ -8,7 +8,7 @@ import createSagaMiddleware from "redux-saga";
 import actorsReducer from "./store/reducers/actors";
 import moviesReducer from "./store/reducers/movies";
 
-import { watchMovies } from "./store/sagas/index";
+import { watchMovies, watchActors } from "./store/sagas/index";
 
 import "./index.css";
 import App from "./App";
@@ -32,6 +32,7 @@ const store = createStore(
 );
 
 sagaMiddleware.run(watchMovies);
+sagaMiddleware.run(watchActors);
 
 const app = (
   <React.StrictMode>

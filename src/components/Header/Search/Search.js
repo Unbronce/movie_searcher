@@ -3,7 +3,7 @@ import React from "react";
 // import { InputBase, makeStyles, fade, Box } from "@material-ui/core";
 
 const Search = (props) => {
-  return <p>shypka vusata</p>;
+  return <p>placeholder</p>;
 };
 
 export default Search;

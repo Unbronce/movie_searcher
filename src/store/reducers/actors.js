@@ -1,4 +1,4 @@
-// import * as actionTypes from "../actions/actionTypes";
+import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
   actors: [],
@@ -6,6 +6,11 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.SET_ACTORS:
+      return {
+        ...state,
+        actors: action.actors,
+      };
     default:
       return state;
   }
