@@ -1,0 +1,2 @@
+export const INITIATE_MOVIES = "INITIATE_MOVIES";
+export const SET_MOVIES = "SET_MOVIES";
