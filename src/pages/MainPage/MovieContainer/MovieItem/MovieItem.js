@@ -16,10 +16,10 @@ const useStyles = makeStyles({
   },
 });
 
-const MovieItem = (props) => {
+const MovieItem = React.memo((props) => {
   const classes = useStyles();
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} onClick={props.clicked}>
       <CardActionArea>
         <CardMedia
           height="500"
@@ -39,6 +39,6 @@ const MovieItem = (props) => {
       </CardActionArea>
     </Card>
   );
-};
+});
 
 export default MovieItem;

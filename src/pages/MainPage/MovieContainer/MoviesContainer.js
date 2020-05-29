@@ -1,5 +1,6 @@
 import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core";
 import * as actions from "../../../store/actions/index";
@@ -16,12 +17,14 @@ const useStyles = makeStyles({
   },
 });
 
-const MoviesContainer = (props) => {
+const MoviesContainer = React.memo((props) => {
   const movies = useSelector((state) => state.movies.movies);
 
   const classes = useStyles();
 
   const dispatch = useDispatch();
+
+  const history = useHistory();
 
   const onInitMovies = useCallback(() => dispatch(actions.initMovies()), [
     dispatch,
@@ -31,6 +34,10 @@ const MoviesContainer = (props) => {
     onInitMovies();
   }, [onInitMovies]);
 
+  const onMovieItemHandler = (id) => {
+    history.push("/movies/" + id);
+  };
+
   const data = movies.map((movie) => {
     return (
       <MovieItem
@@ -39,10 +46,16 @@ const MoviesContainer = (props) => {
         image={movie.poster_path}
         title={movie.title}
         overview={movie.overview}
+        clicked={() => onMovieItemHandler(movie.id)}
       />
     );
   });
-  return <div className={classes.root}>{data}</div>;
-};
+
+  return (
+    <>
+      <div className={classes.root}>{data}</div>
+    </>
+  );
+});
 
 export default MoviesContainer;
