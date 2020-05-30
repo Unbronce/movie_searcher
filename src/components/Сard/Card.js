@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   },
 });
 
-const MovieItem = React.memo((props) => {
+const CardInfo = React.memo((props) => {
   const classes = useStyles();
   return (
     <Card className={classes.root} onClick={props.clicked}>
@@ -33,7 +33,7 @@ const MovieItem = React.memo((props) => {
             {props.title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {props.overview}
+            {props.string} {props.overview}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -41,4 +41,4 @@ const MovieItem = React.memo((props) => {
   );
 });
 
-export default MovieItem;
+export default CardInfo;

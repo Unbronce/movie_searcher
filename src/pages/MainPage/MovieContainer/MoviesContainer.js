@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core";
 import * as actions from "../../../store/actions/index";
 
-import MovieItem from "./MovieItem/MovieItem";
+import CardInfo from "../../../components/Сard/Card";
 
 const useStyles = makeStyles({
   root: {
@@ -40,7 +40,7 @@ const MoviesContainer = React.memo((props) => {
 
   const data = movies.map((movie) => {
     return (
-      <MovieItem
+      <CardInfo
         key={movie.id}
         alt={movie.title}
         image={movie.poster_path}

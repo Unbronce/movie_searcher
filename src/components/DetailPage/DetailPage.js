@@ -40,7 +40,7 @@ const DetailPage = (props) => {
               <img
                 className={classes.img}
                 alt={props.alt}
-                src={`https://image.tmdb.org/t/p/w780/${props.image}`}
+                src={`https://image.tmdb.org/t/p/w500/${props.image}`}
               />
             </ButtonBase>
           </Grid>

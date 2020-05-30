@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core";
 import * as actions from "../../../store/actions/index";
 
-import ActorItem from "./ActorItem/ActorItem";
+import CardInfo from "../../../components/Сard/Card";
 
 const useStyles = makeStyles({
   root: {
@@ -40,11 +40,12 @@ const ActorsContainer = React.memo((props) => {
 
   const data = actors.map((actor) => {
     return (
-      <ActorItem
+      <CardInfo
         key={actor.id}
         alt={actor.name}
         image={actor.profile_path}
         title={actor.name}
+        string={"Popularity:"}
         overview={actor.popularity}
         clicked={() => onActorItemHandler(actor.id)}
       />
