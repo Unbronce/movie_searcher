@@ -39,7 +39,11 @@ const Navigation = (props) => {
             />
           </Tabs>
         </div>
-        <Input placeholder="Search..." />
+        <Input
+          value={props.value}
+          onChange={props.changed}
+          placeholder="Search..."
+        />
       </Paper>
     </>
   );

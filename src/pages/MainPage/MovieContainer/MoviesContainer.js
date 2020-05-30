@@ -19,6 +19,7 @@ const useStyles = makeStyles({
 
 const MoviesContainer = React.memo((props) => {
   const movies = useSelector((state) => state.movies.movies);
+  const searched = useSelector((state) => state.search.search);
 
   const classes = useStyles();
 
@@ -38,7 +39,15 @@ const MoviesContainer = React.memo((props) => {
     history.push("/movies/" + id);
   };
 
-  const data = movies.map((movie) => {
+  let info = null;
+
+  if (searched.length > 0) {
+    info = searched;
+  } else {
+    info = movies;
+  }
+
+  const data = info.map((movie) => {
     return (
       <CardInfo
         key={movie.id}

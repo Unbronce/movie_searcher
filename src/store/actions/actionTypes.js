@@ -9,3 +9,6 @@ export const SET_ACTORS = "SET_ACTORS";
 
 export const GET_ACTOR_BY_ID = "GET_ACTOR_BY_ID";
 export const SET_ACTOR_BY_ID = "SET_ACTOR_BY_ID";
+
+export const INIT_SEARCH = "INIT_SEARCH";
+export const SET_SEARCH = "SET_SEARCH";

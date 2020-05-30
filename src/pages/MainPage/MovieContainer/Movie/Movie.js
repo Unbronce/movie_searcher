@@ -20,8 +20,6 @@ const Movie = (props) => {
     onGetMovie();
   }, [onGetMovie]);
 
-  console.log(movie);
-
   return (
     <DetailPage
       alt={movie.title}

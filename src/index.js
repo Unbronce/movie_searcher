@@ -7,8 +7,9 @@ import createSagaMiddleware from "redux-saga";
 
 import actorsReducer from "./store/reducers/actors";
 import moviesReducer from "./store/reducers/movies";
+import searchReducer from "./store/reducers/search";
 
-import { watchMovies, watchActors } from "./store/sagas/index";
+import { watchMovies, watchActors, watchSearch } from "./store/sagas/index";
 
 import "./index.css";
 import App from "./App";
@@ -22,6 +23,7 @@ const composeEnhancers =
 const rootReducer = combineReducers({
   actors: actorsReducer,
   movies: moviesReducer,
+  search: searchReducer,
 });
 
 const sagaMiddleware = createSagaMiddleware();
@@ -33,6 +35,7 @@ const store = createStore(
 
 sagaMiddleware.run(watchMovies);
 sagaMiddleware.run(watchActors);
+sagaMiddleware.run(watchSearch);
 
 const app = (
   <React.StrictMode>

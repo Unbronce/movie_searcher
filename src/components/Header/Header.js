@@ -10,7 +10,7 @@ const Header = (props) => {
         <Typography align="center" variant="h2">
           The Movie Searcher is here!
         </Typography>
-        <Navigation />
+        <Navigation changed={props.changed} value={props.value} />
       </AppBar>
     </>
   );
