@@ -12,3 +12,17 @@ export const setMovies = (movies) => {
     movies: movies,
   };
 };
+
+export const getMovie = (id) => {
+  return {
+    type: actionTypes.GET_MOVIE_BY_ID,
+    movieId: id
+  };
+};
+
+export const setMovie = (movie) => {
+  return {
+    type: actionTypes.SET_MOVIE_BY_ID,
+    movie: movie,
+  };
+};

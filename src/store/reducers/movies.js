@@ -2,6 +2,7 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
   movies: [],
+  movie: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         movies: action.movies,
+      };
+    case actionTypes.SET_MOVIE_BY_ID:
+      return {
+        ...state,
+        movie: action.movie,
       };
     default:
       return state;

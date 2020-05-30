@@ -10,3 +10,14 @@ export function* initMoviesSaga() {
     yield put(actions.setMovies(response.data.results));
   } catch (error) {}
 }
+
+export function* getMovieSaga(action) {
+  try {
+    const response = yield axios.get(
+      `https://api.themoviedb.org/3/movie/${action.movieId}?api_key=703561a5dc417168c521fb0b84b10fa4&language=en-US`
+    );
+    yield put(actions.setMovie(response.data));
+  } catch (error) {
+    console.log(error);
+  }
+}

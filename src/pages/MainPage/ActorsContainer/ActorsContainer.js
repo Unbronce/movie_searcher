@@ -31,6 +31,8 @@ const ActorsContainer = React.memo((props) => {
     onInitActors();
   }, [onInitActors]);
 
+  console.log(actors);
+
   const data = actors.map((actor) => {
     return (
       <ActorItem
