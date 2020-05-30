@@ -12,6 +12,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         actors: action.actors,
       };
+    case actionTypes.SET_ACTOR_BY_ID:
+      return {
+        ...state,
+        actor: action.actor,
+      };
     default:
       return state;
   }

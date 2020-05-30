@@ -54,7 +54,7 @@ const DetailPage = (props) => {
                   {props.overview}
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
-                  Realease date: {props.release}
+                  {props.string} {props.release}
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
                   Popularity: {props.popularity}

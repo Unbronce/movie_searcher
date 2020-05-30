@@ -3,7 +3,7 @@ import { takeEvery } from "redux-saga/effects";
 import * as actionTypes from "../actions/actionTypes";
 
 import { initMoviesSaga, getMovieSaga } from "./movies";
-import { initActorsSaga } from "./actors";
+import { initActorsSaga, getActorSaga } from "./actors";
 
 export function* watchMovies() {
   yield takeEvery(actionTypes.INITIATE_MOVIES, initMoviesSaga);
@@ -12,4 +12,5 @@ export function* watchMovies() {
 
 export function* watchActors() {
   yield takeEvery(actionTypes.INITIATE_ACTORS, initActorsSaga);
+  yield takeEvery(actionTypes.GET_ACTOR_BY_ID, getActorSaga);
 }

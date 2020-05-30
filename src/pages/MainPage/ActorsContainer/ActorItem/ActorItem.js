@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 const MovieItem = (props) => {
   const classes = useStyles();
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} onClick={props.clicked}>
       <CardActionArea>
         <CardMedia
           height="500"

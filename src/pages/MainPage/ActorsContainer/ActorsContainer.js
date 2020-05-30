@@ -1,5 +1,6 @@
 import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core";
 import * as actions from "../../../store/actions/index";
@@ -23,6 +24,8 @@ const ActorsContainer = React.memo((props) => {
 
   const dispatch = useDispatch();
 
+  const history = useHistory();
+
   const onInitActors = useCallback(() => dispatch(actions.initActors()), [
     dispatch,
   ]);
@@ -31,7 +34,9 @@ const ActorsContainer = React.memo((props) => {
     onInitActors();
   }, [onInitActors]);
 
-  console.log(actors);
+  const onActorItemHandler = (id) => {
+    history.push("/actors/" + id);
+  };
 
   const data = actors.map((actor) => {
     return (
@@ -41,6 +46,7 @@ const ActorsContainer = React.memo((props) => {
         image={actor.profile_path}
         title={actor.name}
         overview={actor.popularity}
+        clicked={() => onActorItemHandler(actor.id)}
       />
     );
   });

@@ -7,30 +7,30 @@ import DetailPage from "../../../../components/DetailPage/DetailPage";
 const Movie = (props) => {
   const { id } = props.match.params;
 
-  const movie = useSelector((state) => state.movies.movie);
+  const actor = useSelector((state) => state.actors.actor);
 
   const dispatch = useDispatch();
 
-  const onGetMovie = useCallback(() => dispatch(actions.getMovie(id)), [
+  const onGetActor = useCallback(() => dispatch(actions.getActor(id)), [
     dispatch,
     id,
   ]);
 
   useEffect(() => {
-    onGetMovie();
-  }, [onGetMovie]);
+    onGetActor();
+  }, [onGetActor]);
 
-  console.log(movie);
+  console.log(actor);
 
   return (
     <DetailPage
-      alt={movie.title}
-      image={movie.poster_path}
-      title={movie.title}
-      overview={movie.overview}
-      string={"Realease date:"}
-      release={movie.release_date}
-      popularity={movie.popularity}
+      alt={actor.name}
+      image={actor.profile_path}
+      title={actor.name}
+      overview={actor.biography}
+      string={"Birthday:"}
+      release={actor.birthday}
+      popularity={actor.popularity}
     />
   );
 };

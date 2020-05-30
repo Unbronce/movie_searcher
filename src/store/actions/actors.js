@@ -12,3 +12,17 @@ export const setActors = (actors) => {
     actors: actors,
   };
 };
+
+export const getActor = (id) => {
+  return {
+    type: actionTypes.GET_ACTOR_BY_ID,
+    actorId: id,
+  };
+};
+
+export const setActor = (actor) => {
+  return {
+    type: actionTypes.SET_ACTOR_BY_ID,
+    actor: actor,
+  };
+};
