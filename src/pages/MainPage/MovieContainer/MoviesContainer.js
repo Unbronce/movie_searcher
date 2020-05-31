@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import debounce from "lodash.debounce";
 
 import { makeStyles } from "@material-ui/core";
 import * as actions from "../../../store/actions/index";

@@ -1,6 +1,4 @@
-import React, { useState, useCallback } from "react";
-import { useDispatch } from "react-redux";
-import * as actions from "../../store/actions/index";
+import React from "react";
 import { Input } from "@material-ui/core";
 
 const Search = (props) => {

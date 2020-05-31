@@ -4,7 +4,7 @@ import * as actionTypes from "../actions/actionTypes/actionTypes";
 
 import { initMoviesSaga, getMovieSaga } from "./movies/movies";
 import { initActorsSaga, getActorSaga } from "./actors/actors";
-import { initSearchMoviesSaga } from "./search/search";
+import { initSearchMoviesSaga, initSearchActorsSaga } from "./search/search";
 
 export function* watchMovies() {
   yield takeEvery(actionTypes.INITIATE_MOVIES, initMoviesSaga);
@@ -18,4 +18,5 @@ export function* watchActors() {
 
 export function* watchSearch() {
   yield takeEvery(actionTypes.INIT_SEARCH_MOVIES, initSearchMoviesSaga);
+  yield takeEvery(actionTypes.INIT_SEARCH_ACTORS, initSearchActorsSaga);
 }

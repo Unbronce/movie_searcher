@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -21,11 +21,10 @@ const useStyles = makeStyles({
 
 const ActorsContainer = React.memo((props) => {
   const actors = useSelector((state) => state.actors.actors);
+  const searched = useSelector((state) => state.search.actors);
 
   const classes = useStyles();
-
   const dispatch = useDispatch();
-
   const history = useHistory();
 
   const onInitActors = useCallback(() => dispatch(actions.initActors()), [
@@ -40,7 +39,30 @@ const ActorsContainer = React.memo((props) => {
     history.push("/actors/" + id);
   };
 
-  const data = actors.map((actor) => {
+  //test
+  const [searchedActor, setSearchedActor] = useState("");
+
+  const onInitSearch = useCallback(
+    (searchedActor) => dispatch(actions.initSearchActor(searchedActor)),
+    [dispatch]
+  );
+
+  const onSearchHandler = (event) => {
+    setSearchedActor(event.target.value);
+    onInitSearch(searchedActor);
+  };
+
+  //end-test
+
+  let info = null;
+
+  if (searched.length > 0) {
+    info = searched;
+  } else {
+    info = actors;
+  }
+
+  const data = info.map((actor) => {
     return (
       <CardInfo
         key={actor.id}
@@ -55,7 +77,10 @@ const ActorsContainer = React.memo((props) => {
   });
   return (
     <>
-      <Header />
+      <Header
+        changed={(event) => onSearchHandler(event)}
+        value={searchedActor}
+      />
       <div className={classes.root}>{data}</div>
     </>
   );

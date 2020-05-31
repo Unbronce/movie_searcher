@@ -12,6 +12,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         movies: action.data,
       };
+    case actionTypes.SET_SEARCH_ACTORS:
+      return {
+        ...state,
+        actors: action.data,
+      };
     default:
       return state;
   }
