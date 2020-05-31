@@ -20,6 +20,7 @@ const useStyles = makeStyles({
 });
 
 const ActorsContainer = React.memo((props) => {
+  const [searchedActor, setSearchedActor] = useState("");
   const actors = useSelector((state) => state.actors.actors);
   const searched = useSelector((state) => state.search.actors);
 
@@ -30,29 +31,23 @@ const ActorsContainer = React.memo((props) => {
   const onInitActors = useCallback(() => dispatch(actions.initActors()), [
     dispatch,
   ]);
-
-  useEffect(() => {
-    onInitActors();
-  }, [onInitActors]);
-
-  const onActorItemHandler = (id) => {
-    history.push("/actors/" + id);
-  };
-
-  //test
-  const [searchedActor, setSearchedActor] = useState("");
-
   const onInitSearch = useCallback(
     (searchedActor) => dispatch(actions.initSearchActor(searchedActor)),
     [dispatch]
   );
+
+  useEffect(() => {
+    onInitActors();
+  }, [onInitActors]);
 
   const onSearchHandler = (event) => {
     setSearchedActor(event.target.value);
     onInitSearch(searchedActor);
   };
 
-  //end-test
+  const onActorItemHandler = (id) => {
+    history.push("/actors/" + id);
+  };
 
   let info = null;
 

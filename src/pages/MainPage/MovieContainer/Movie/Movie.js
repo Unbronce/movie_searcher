@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../../../store/actions/index";
 
 import DetailPage from "../../../DetailPage/DetailPage";
+import Header from "../../../../components/Header/Header";
 
 const Movie = (props) => {
   const { id } = props.match.params;
@@ -21,15 +22,18 @@ const Movie = (props) => {
   }, [onGetMovie]);
 
   return (
-    <DetailPage
-      alt={movie.title}
-      image={movie.poster_path}
-      title={movie.title}
-      overview={movie.overview}
-      string={"Realease date:"}
-      release={movie.release_date}
-      popularity={movie.popularity}
-    />
+    <>
+      <Header />
+      <DetailPage
+        alt={movie.title}
+        image={movie.poster_path}
+        title={movie.title}
+        overview={movie.overview}
+        string={"Realease date:"}
+        release={movie.release_date}
+        popularity={movie.popularity}
+      />
+    </>
   );
 };
 

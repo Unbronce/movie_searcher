@@ -19,6 +19,7 @@ const useStyles = makeStyles({
 });
 
 const MoviesContainer = React.memo((props) => {
+  const [searchedFilm, setSearchedFilm] = useState("");
   const movies = useSelector((state) => state.movies.movies);
   const searched = useSelector((state) => state.search.movies);
 
@@ -29,29 +30,23 @@ const MoviesContainer = React.memo((props) => {
   const onInitMovies = useCallback(() => dispatch(actions.initMovies()), [
     dispatch,
   ]);
-
-  useEffect(() => {
-    onInitMovies();
-  }, [onInitMovies]);
-
-  const onMovieItemHandler = (id) => {
-    history.push("/movies/" + id);
-  };
-
-  //test
-  const [searchedFilm, setSearchedFilm] = useState("");
-
   const onInitSearch = useCallback(
     (searchedFilm) => dispatch(actions.initSearchMovie(searchedFilm)),
     [dispatch]
   );
+
+  useEffect(() => {
+    onInitMovies();
+  }, [onInitMovies]);
 
   const onSearchHandler = (event) => {
     setSearchedFilm(event.target.value);
     onInitSearch(searchedFilm);
   };
 
-  //end-test
+  const onMovieItemHandler = (id) => {
+    history.push("/movies/" + id);
+  };
 
   let info = null;
 
