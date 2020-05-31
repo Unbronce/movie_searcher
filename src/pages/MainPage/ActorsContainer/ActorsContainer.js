@@ -5,6 +5,8 @@ import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core";
 import * as actions from "../../../store/actions/index";
 
+import Header from "../../../components/Header/Header";
+
 import CardInfo from "../../../components/Сard/Card";
 
 const useStyles = makeStyles({
@@ -51,7 +53,12 @@ const ActorsContainer = React.memo((props) => {
       />
     );
   });
-  return <div className={classes.root}>{data}</div>;
+  return (
+    <>
+      <Header />
+      <div className={classes.root}>{data}</div>
+    </>
+  );
 });
 
 export default ActorsContainer;

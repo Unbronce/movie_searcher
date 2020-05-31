@@ -1,4 +1,4 @@
-import * as actionTypes from "./actionTypes";
+import * as actionTypes from "../actionTypes/actionTypes";
 
 export const initMovies = () => {
   return {
@@ -16,7 +16,7 @@ export const setMovies = (movies) => {
 export const getMovie = (id) => {
   return {
     type: actionTypes.GET_MOVIE_BY_ID,
-    movieId: id
+    movieId: id,
   };
 };
 

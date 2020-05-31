@@ -1,3 +1,3 @@
-export { initMovies, setMovies, getMovie, setMovie } from "./movies";
-export { initActors, setActors, getActor, setActor } from "./actors";
-export { initSearch, setSearch } from "./search";
+export { initMovies, setMovies, getMovie, setMovie } from "./movies/movies";
+export { initActors, setActors, getActor, setActor } from "./actors/actors";
+export { initSearchMovie, setSearchedMovies } from "./search/search";

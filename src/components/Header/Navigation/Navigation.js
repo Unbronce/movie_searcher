@@ -1,6 +1,7 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
-import { makeStyles, Paper, Tab, Tabs, Input } from "@material-ui/core";
+import { makeStyles, Paper, Tab, Tabs } from "@material-ui/core";
+import Search from "../../Search/Search";
 
 const useStyles = makeStyles({
   root: {
@@ -39,11 +40,7 @@ const Navigation = (props) => {
             />
           </Tabs>
         </div>
-        <Input
-          value={props.value}
-          onChange={props.changed}
-          placeholder="Search..."
-        />
+        <Search changed={props.changed} value={props.value} />
       </Paper>
     </>
   );

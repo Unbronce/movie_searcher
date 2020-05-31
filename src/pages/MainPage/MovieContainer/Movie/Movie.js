@@ -2,7 +2,7 @@ import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../../../store/actions/index";
 
-import DetailPage from "../../../../components/DetailPage/DetailPage";
+import DetailPage from "../../../DetailPage/DetailPage";
 
 const Movie = (props) => {
   const { id } = props.match.params;

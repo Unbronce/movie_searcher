@@ -1,10 +1,10 @@
 import { takeEvery } from "redux-saga/effects";
 
-import * as actionTypes from "../actions/actionTypes";
+import * as actionTypes from "../actions/actionTypes/actionTypes";
 
-import { initMoviesSaga, getMovieSaga } from "./movies";
-import { initActorsSaga, getActorSaga } from "./actors";
-import { initSearchSaga } from "./search";
+import { initMoviesSaga, getMovieSaga } from "./movies/movies";
+import { initActorsSaga, getActorSaga } from "./actors/actors";
+import { initSearchMoviesSaga } from "./search/search";
 
 export function* watchMovies() {
   yield takeEvery(actionTypes.INITIATE_MOVIES, initMoviesSaga);
@@ -17,5 +17,5 @@ export function* watchActors() {
 }
 
 export function* watchSearch() {
-  yield takeEvery(actionTypes.INIT_SEARCH, initSearchSaga);
+  yield takeEvery(actionTypes.INIT_SEARCH_MOVIES, initSearchMoviesSaga);
 }

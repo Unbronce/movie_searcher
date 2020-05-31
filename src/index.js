@@ -5,9 +5,9 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import createSagaMiddleware from "redux-saga";
 
-import actorsReducer from "./store/reducers/actors";
-import moviesReducer from "./store/reducers/movies";
-import searchReducer from "./store/reducers/search";
+import actorsReducer from "./store/reducers/actors/actors";
+import moviesReducer from "./store/reducers/movies/movies";
+import searchReducer from "./store/reducers/search/search";
 
 import { watchMovies, watchActors, watchSearch } from "./store/sagas/index";
 

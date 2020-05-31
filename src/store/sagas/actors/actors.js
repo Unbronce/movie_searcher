@@ -1,6 +1,6 @@
 import axios from "axios";
 import { put } from "redux-saga/effects";
-import * as actions from "../actions/index";
+import * as actions from "../../actions/index";
 
 export function* initActorsSaga() {
   try {
