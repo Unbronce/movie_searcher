@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import debounce from "lodash.debounce";
 
 import { makeStyles } from "@material-ui/core";
 import * as actions from "../../../store/actions/index";
@@ -40,10 +41,9 @@ const ActorsContainer = React.memo((props) => {
     onInitActors();
   }, [onInitActors]);
 
-  const onSearchHandler = (event) => {
-    setSearchedActor(event.target.value);
-    onInitSearch(searchedActor);
-  };
+  const bounced = debounce((e) => {
+    onInitSearch(e.target.value);
+  }, 400);
 
   const onActorItemHandler = (id) => {
     history.push("/actors/" + id);
@@ -57,24 +57,28 @@ const ActorsContainer = React.memo((props) => {
     info = actors;
   }
 
-  const data = info.map((actor) => {
-    return (
-      <CardInfo
-        key={actor.id}
-        alt={actor.name}
-        image={actor.profile_path}
-        title={actor.name}
-        string={"Popularity:"}
-        overview={actor.popularity}
-        clicked={() => onActorItemHandler(actor.id)}
-      />
-    );
-  });
+  const data = info
+    .filter((actor) => actor.profile_path !== null)
+    .map((actor) => {
+      return (
+        <CardInfo
+          key={actor.id}
+          alt={actor.name}
+          image={actor.profile_path}
+          title={actor.name}
+          string={"Popularity:"}
+          overview={actor.popularity}
+          clicked={() => onActorItemHandler(actor.id)}
+        />
+      );
+    });
   return (
     <>
       <Header
-        changed={(event) => onSearchHandler(event)}
-        value={searchedActor}
+        changed={(e) => {
+          e.persist();
+          bounced(e);
+        }}
       />
       <div className={classes.root}>{data}</div>
     </>
