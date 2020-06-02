@@ -15,7 +15,6 @@ const Movie = (props) => {
   const clearData = useCallback(() => dispatch(actions.clearMovie()), [
     dispatch,
   ]);
-
   const onGetMovie = useCallback(() => dispatch(actions.getMovie(id)), [
     dispatch,
     id,

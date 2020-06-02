@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import debounce from "lodash.debounce";
 
 import { makeStyles } from "@material-ui/core";
 import * as actions from "../../../store/actions/index";
@@ -19,7 +20,7 @@ const useStyles = makeStyles({
 });
 
 const MoviesContainer = React.memo((props) => {
-  const [searchedFilm, setSearchedFilm] = useState("");
+  // const [searchedFilm, setSearchedFilm] = useState("");
   const movies = useSelector((state) => state.movies.movies);
   const searched = useSelector((state) => state.search.movies);
 
@@ -31,7 +32,7 @@ const MoviesContainer = React.memo((props) => {
     dispatch,
   ]);
   const onInitSearch = useCallback(
-    (searchedFilm) => dispatch(actions.initSearchMovie(searchedFilm)),
+    (data) => dispatch(actions.initSearchMovie(data)),
     [dispatch]
   );
 
@@ -40,9 +41,13 @@ const MoviesContainer = React.memo((props) => {
   }, [onInitMovies]);
 
   const onSearchHandler = (event) => {
-    setSearchedFilm(event.target.value);
-    onInitSearch(searchedFilm);
+    // onInitSearch(event);
   };
+
+  const bounced = debounce((e) => {
+    // onSearchHandler(e.target.value);
+    onInitSearch(e.target.value);
+  }, 400);
 
   const onMovieItemHandler = (id) => {
     history.push("/movies/" + id);
@@ -56,24 +61,27 @@ const MoviesContainer = React.memo((props) => {
     info = movies;
   }
 
-  const data = info.map((movie) => {
-    return (
-      <CardInfo
-        key={movie.id}
-        alt={movie.title}
-        image={movie.poster_path}
-        title={movie.title}
-        overview={movie.overview}
-        clicked={() => onMovieItemHandler(movie.id)}
-      />
-    );
-  });
-
+  const data = info
+    .filter((movie) => movie.poster_path !== null)
+    .map((movie) => {
+      return (
+        <CardInfo
+          key={movie.id}
+          alt={movie.title}
+          image={movie.poster_path}
+          title={movie.title}
+          overview={movie.overview}
+          clicked={() => onMovieItemHandler(movie.id)}
+        />
+      );
+    });
   return (
     <>
       <Header
-        changed={(event) => onSearchHandler(event)}
-        value={searchedFilm}
+        changed={(e) => {
+          e.persist();
+          bounced(e);
+        }}
       />
       <div className={classes.root}>{data}</div>
     </>
