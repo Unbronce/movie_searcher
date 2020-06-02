@@ -7,6 +7,11 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.CLEAR_ACTOR_DATA:
+      return {
+        ...state,
+        actor: [],
+      };
     case actionTypes.SET_ACTORS:
       return {
         ...state,

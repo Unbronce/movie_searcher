@@ -12,6 +12,9 @@ const Movie = (props) => {
 
   const dispatch = useDispatch();
 
+  const clearData = useCallback(() => dispatch(actions.clearActor()), [
+    dispatch,
+  ]);
   const onGetActor = useCallback(() => dispatch(actions.getActor(id)), [
     dispatch,
     id,
@@ -19,9 +22,10 @@ const Movie = (props) => {
 
   useEffect(() => {
     onGetActor();
-  }, [onGetActor]);
-
-  console.log(actor);
+    return () => {
+      clearData();
+    };
+  }, [onGetActor, clearData]);
 
   return (
     <>

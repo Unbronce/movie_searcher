@@ -4,11 +4,15 @@ export const SET_MOVIES = "SET_MOVIES";
 export const GET_MOVIE_BY_ID = "GET_MOVIE_BY_ID";
 export const SET_MOVIE_BY_ID = "SET_MOVIE_BY_ID";
 
+export const CLEAR_MOVIE_DATA = "CLEAR_MOVIE_DATA";
+
 export const INITIATE_ACTORS = "INITIATE_ACTORS";
 export const SET_ACTORS = "SET_ACTORS";
 
 export const GET_ACTOR_BY_ID = "GET_ACTOR_BY_ID";
 export const SET_ACTOR_BY_ID = "SET_ACTOR_BY_ID";
+
+export const CLEAR_ACTOR_DATA = "CLEAR_ACTOR_DATA";
 
 export const INIT_SEARCH_MOVIES = "INIT_SEARCH_MOVIES";
 export const SET_SEARCH_MOVIES = "SET_SEARCH_MOVIES";

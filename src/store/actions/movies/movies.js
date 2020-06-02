@@ -26,3 +26,9 @@ export const setMovie = (movie) => {
     movie: movie,
   };
 };
+
+export const clearMovie = () => {
+  return {
+    type: actionTypes.CLEAR_MOVIE_DATA,
+  };
+};

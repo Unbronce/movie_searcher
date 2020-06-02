@@ -26,3 +26,9 @@ export const setActor = (actor) => {
     actor: actor,
   };
 };
+
+export const clearActor = () => {
+  return {
+    type: actionTypes.CLEAR_ACTOR_DATA,
+  };
+};
