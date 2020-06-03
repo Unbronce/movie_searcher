@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import * as actions from "../../../../store/actions/index";
+import * as actions from "../../../../store/movies/actions/index";
 
 import DetailPage from "../../../DetailPage/DetailPage";
 import Header from "../../../../components/Header/Header";

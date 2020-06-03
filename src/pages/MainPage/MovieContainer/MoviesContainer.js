@@ -2,14 +2,14 @@ import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import * as actions from "../../../store/actions/index";
+import * as actions from "../../../store/movies/actions/index";
 
 import Header from "../../../components/Header/Header";
 import ListItems from "../../../components/ListItems/ListItems";
 
 const MoviesContainer = React.memo((props) => {
   const movies = useSelector((state) => state.movies.movies);
-  const searched = useSelector((state) => state.search.movies);
+  const searched = useSelector((state) => state.searchedMovies.movies);
 
   const dispatch = useDispatch();
   const history = useHistory();

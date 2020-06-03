@@ -5,11 +5,13 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import createSagaMiddleware from "redux-saga";
 
-import actorsReducer from "./store/reducers/actors/actors";
-import moviesReducer from "./store/reducers/movies/movies";
-import searchReducer from "./store/reducers/search/search";
+import actorsReducer from "./store/actors/reducers/actors";
+import moviesReducer from "./store/movies/reducers/movies";
+import searchActorsReducer from "./store/actors/reducers/search";
+import searchMoviesReducer from "./store/movies/reducers/search";
 
-import { watchMovies, watchActors, watchSearch } from "./store/sagas/index";
+import { watchActors, watchSearchActors } from "./store/actors/sagas/index";
+import { watchMovies, watchSearchFilms } from "./store/movies/sagas/index";
 
 import "./index.css";
 import App from "./App";
@@ -23,7 +25,8 @@ const composeEnhancers =
 const rootReducer = combineReducers({
   actors: actorsReducer,
   movies: moviesReducer,
-  search: searchReducer,
+  searchedActors: searchActorsReducer,
+  searchedMovies: searchMoviesReducer,
 });
 
 const sagaMiddleware = createSagaMiddleware();
@@ -35,7 +38,8 @@ const store = createStore(
 
 sagaMiddleware.run(watchMovies);
 sagaMiddleware.run(watchActors);
-sagaMiddleware.run(watchSearch);
+sagaMiddleware.run(watchSearchActors);
+sagaMiddleware.run(watchSearchFilms);
 
 const app = (
   <React.StrictMode>

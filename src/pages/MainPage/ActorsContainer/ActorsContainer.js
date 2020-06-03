@@ -2,7 +2,7 @@ import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import * as actions from "../../../store/actions/index";
+import * as actions from "../../../store/actors/actions/index";
 
 import Header from "../../../components/Header/Header";
 
@@ -10,7 +10,7 @@ import ListItems from "../../../components/ListItems/ListItems";
 
 const ActorsContainer = React.memo((props) => {
   const actors = useSelector((state) => state.actors.actors);
-  const searched = useSelector((state) => state.search.actors);
+  const searched = useSelector((state) => state.searchedActors.actors);
 
   const dispatch = useDispatch();
   const history = useHistory();
