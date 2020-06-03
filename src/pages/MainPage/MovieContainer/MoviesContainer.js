@@ -1,7 +1,6 @@
 import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import debounce from "lodash.debounce";
 
 import * as actions from "../../../store/actions/index";
 
@@ -27,22 +26,13 @@ const MoviesContainer = React.memo((props) => {
     onInitMovies();
   }, [onInitMovies]);
 
-  const bounced = debounce((e) => {
-    onInitSearch(e.target.value);
-  }, 400);
-
   const onMovieItemHandler = (id) => {
     history.push("/movies/" + id);
   };
 
   return (
     <>
-      <Header
-        changed={(e) => {
-          e.persist();
-          bounced(e);
-        }}
-      />
+      <Header changed={onInitSearch} />
       <ListItems
         entity={movies}
         searched={searched}

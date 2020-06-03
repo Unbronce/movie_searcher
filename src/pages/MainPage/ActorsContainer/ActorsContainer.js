@@ -1,7 +1,6 @@
 import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import debounce from "lodash.debounce";
 
 import * as actions from "../../../store/actions/index";
 
@@ -28,23 +27,13 @@ const ActorsContainer = React.memo((props) => {
     onInitActors();
   }, [onInitActors]);
 
-  const bounced = debounce((e) => {
-    onInitSearch(e.target.value);
-  }, 400);
-
   const onActorItemHandler = (id) => {
     history.push("/actors/" + id);
   };
 
   return (
     <>
-      <Header
-        changed={(e) => {
-          e.persist();
-          bounced(e);
-        }}
-      />
-
+      <Header changed={onInitSearch} />
       <ListItems
         entity={actors}
         searched={searched}

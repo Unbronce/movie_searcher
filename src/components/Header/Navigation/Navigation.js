@@ -1,6 +1,7 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { makeStyles, Paper, Tab, Tabs, Input } from "@material-ui/core";
+import debounce from "lodash.debounce";
 
 const useStyles = makeStyles({
   root: {
@@ -18,6 +19,15 @@ const Navigation = (props) => {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const bounced = debounce((e) => {
+    props.changed(e.target.value);
+  }, 400);
+
+  const onSearchHandler = (event) => {
+    event.persist();
+    bounced(event);
   };
 
   return (
@@ -39,11 +49,7 @@ const Navigation = (props) => {
             />
           </Tabs>
         </div>
-        <Input
-          value={props.value}
-          onChange={props.changed}
-          placeholder="Search..."
-        />
+        <Input onChange={onSearchHandler} placeholder="Search..." />
       </Paper>
     </>
   );
