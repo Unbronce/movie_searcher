@@ -30,28 +30,27 @@ const Navigation = React.memo((props) => {
   return (
     <>
       <Paper square className={classes.root}>
-        <div>
-          <Tab
-            activeStyle={{
-              fontWeight: "bold",
-              color: "red",
-            }}
-            className={classes.spacing}
-            component={RouterLink}
-            to="/movies"
-            label="Movies"
-          />
-          <Tab
-            className={classes.spacing}
-            activeStyle={{
-              fontWeight: "bold",
-              color: "red",
-            }}
-            component={RouterLink}
-            to="/actors"
-            label="Actors"
-          />
-        </div>
+        <Tab
+          activeStyle={{
+            fontWeight: "bold",
+            color: "red",
+          }}
+          className={classes.spacing}
+          component={RouterLink}
+          to="/movies"
+          label="Movies"
+        />
+        <Tab
+          className={classes.spacing}
+          activeStyle={{
+            fontWeight: "bold",
+            color: "red",
+          }}
+          component={RouterLink}
+          to="/actors"
+          label="Actors"
+        />
+
         <Input onChange={onSearchHandler} placeholder="Search..." />
       </Paper>
     </>

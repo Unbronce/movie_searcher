@@ -7,6 +7,12 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.CLEAR_DATA:
+      return {
+        ...state,
+        actors: [],
+        movies: [],
+      };
     case actionTypes.SET_SEARCH_MOVIES:
       return {
         ...state,

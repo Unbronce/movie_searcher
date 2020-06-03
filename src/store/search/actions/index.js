@@ -3,4 +3,5 @@ export {
   setSearchedActors,
   initSearchMovie,
   setSearchedMovies,
+  clearData,
 } from "./search";

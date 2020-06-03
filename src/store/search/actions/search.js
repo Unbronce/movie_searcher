@@ -27,3 +27,9 @@ export const setSearchedMovies = (data) => {
     data: data,
   };
 };
+
+export const clearData = () => {
+  return {
+    type: actionTypes.CLEAR_DATA,
+  };
+};
