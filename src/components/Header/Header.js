@@ -3,7 +3,7 @@ import React from "react";
 import { AppBar, Typography } from "@material-ui/core";
 import Navigation from "./Navigation/Navigation";
 
-const Header = (props) => {
+const Header = React.memo((props) => {
   return (
     <>
       <AppBar position="static" color="primary">
@@ -14,6 +14,6 @@ const Header = (props) => {
       </AppBar>
     </>
   );
-};
+});
 
 export default Header;

@@ -1,6 +1,7 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
-import { makeStyles, Paper, Tab, Tabs, Input } from "@material-ui/core";
+import { NavLink as RouterLink } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import { makeStyles, Paper, Tab, Input } from "@material-ui/core";
 import debounce from "lodash.debounce";
 
 const useStyles = makeStyles({
@@ -13,13 +14,9 @@ const useStyles = makeStyles({
   },
 });
 
-const Navigation = (props) => {
+const Navigation = React.memo((props) => {
+  console.log(props);
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
   const bounced = debounce((e) => {
     props.changed(e.target.value);
@@ -34,25 +31,31 @@ const Navigation = (props) => {
     <>
       <Paper square className={classes.root}>
         <div>
-          <Tabs value={value} onChange={handleChange}>
-            <Tab
-              className={classes.spacing}
-              component={RouterLink}
-              to="/movies"
-              label="Movies"
-            />
-            <Tab
-              className={classes.spacing}
-              component={RouterLink}
-              to="/actors"
-              label="Actors"
-            />
-          </Tabs>
+          <Tab
+            activeStyle={{
+              fontWeight: "bold",
+              color: "red",
+            }}
+            className={classes.spacing}
+            component={RouterLink}
+            to="/movies"
+            label="Movies"
+          />
+          <Tab
+            className={classes.spacing}
+            activeStyle={{
+              fontWeight: "bold",
+              color: "red",
+            }}
+            component={RouterLink}
+            to="/actors"
+            label="Actors"
+          />
         </div>
         <Input onChange={onSearchHandler} placeholder="Search..." />
       </Paper>
     </>
   );
-};
+});
 
-export default Navigation;
+export default withRouter(Navigation);

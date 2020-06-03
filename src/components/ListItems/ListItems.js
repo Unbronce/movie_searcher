@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   },
 });
 
-const ListItems = (props) => {
+const ListItems = React.memo((props) => {
   const classes = useStyles();
   const { entity, searched } = props;
 
@@ -44,6 +44,6 @@ const ListItems = (props) => {
     });
 
   return <div className={classes.root}>{data}</div>;
-};
+});
 
 export default ListItems;
