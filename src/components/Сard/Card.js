@@ -33,9 +33,6 @@ const CardInfo = React.memo((props) => {
             <Typography gutterBottom variant="h5" component="h2">
               {props.title}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {props.string} {props.overview}
-            </Typography>
           </CardContent>
         </CardActionArea>
       </Card>

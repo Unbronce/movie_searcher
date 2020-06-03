@@ -24,20 +24,19 @@ const ListItems = React.memo((props) => {
     info = entity;
   }
 
+  console.log(entity);
+
   const data = info
     .filter((item) => Boolean(item.poster_path ?? item.profile_path))
     .map((item) => {
       const image = item.poster_path ?? item.profile_path;
-      const overview = item.overview ?? item.popularity;
-      const string = null ?? "Popularity:";
+      const title = item.name ?? item.title;
       return (
         <CardInfo
           key={item.id}
           alt={item.title}
           image={image}
-          title={item.name}
-          string={string}
-          overview={overview}
+          title={title}
           clicked={() => props.handler(item.id)}
         />
       );
