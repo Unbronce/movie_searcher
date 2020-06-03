@@ -5,5 +5,3 @@ export {
   setMovie,
   clearMovie,
 } from "./movies";
-
-export { initSearchMovie, setSearchedMovies } from "./search";

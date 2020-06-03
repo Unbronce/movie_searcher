@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import * as actions from "../../../store/actors/actions/index";
+import * as searchActions from "../../../store/search/actions/index";
 
 import Header from "../../../components/Header/Header";
 
@@ -10,7 +11,7 @@ import ListItems from "../../../components/ListItems/ListItems";
 
 const ActorsContainer = React.memo((props) => {
   const actors = useSelector((state) => state.actors.actors);
-  const searched = useSelector((state) => state.searchedActors.actors);
+  const searched = useSelector((state) => state.searched.actors);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -19,7 +20,7 @@ const ActorsContainer = React.memo((props) => {
     dispatch,
   ]);
   const onInitSearch = useCallback(
-    (searchedActor) => dispatch(actions.initSearchActor(searchedActor)),
+    (searchedActor) => dispatch(searchActions.initSearchActor(searchedActor)),
     [dispatch]
   );
 
