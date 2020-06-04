@@ -13,6 +13,29 @@ export const setMovies = (movies) => {
   };
 };
 
+export const getSelectedPage = (page) => {
+  return {
+    type: actionTypes.GET_SELECTED_PAGE,
+    page: page,
+  };
+};
+
+export const setSelectedPage = (curr, movies) => {
+  return {
+    type: actionTypes.SET_SELECTED_PAGE,
+    currentPage: curr,
+    movies: movies,
+  };
+};
+
+export const setPagesInfo = (curr, total) => {
+  return {
+    type: actionTypes.SET_PAGES_INFO,
+    currentPage: curr,
+    totalPages: total,
+  };
+};
+
 export const getMovie = (id) => {
   return {
     type: actionTypes.GET_MOVIE_BY_ID,

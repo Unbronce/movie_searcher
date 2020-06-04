@@ -1,5 +1,8 @@
 export const INITIATE_MOVIES = "INITIATE_MOVIES";
 export const SET_MOVIES = "SET_MOVIES";
+export const SET_PAGES_INFO = "SET_PAGES_INFO";
+export const GET_SELECTED_PAGE = "GET_SELECTED_PAGE";
+export const SET_SELECTED_PAGE = "SET_SELECTED_PAGE";
 
 export const GET_MOVIE_BY_ID = "GET_MOVIE_BY_ID";
 export const SET_MOVIE_BY_ID = "SET_MOVIE_BY_ID";

@@ -24,8 +24,6 @@ const ListItems = React.memo((props) => {
     info = entity;
   }
 
-  console.log(entity);
-
   const data = info
     .filter((item) => Boolean(item.poster_path ?? item.profile_path))
     .map((item) => {
