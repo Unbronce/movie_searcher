@@ -30,7 +30,6 @@ export function* setSelectedPageSaga(action) {
     const response = yield axios.get(
       `https://api.themoviedb.org/3/movie/popular?api_key=703561a5dc417168c521fb0b84b10fa4&language=en-US&page=${action.page}`
     );
-    console.log(response.data.results);
     yield put(
       actions.setSelectedPage(response.data.page, response.data.results)
     );

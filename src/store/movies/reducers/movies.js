@@ -10,7 +10,6 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_SELECTED_PAGE:
-      console.log(action.movies);
       return {
         ...state,
         movies: action.movies,

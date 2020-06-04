@@ -15,7 +15,6 @@ const useStyles = makeStyles({
 });
 
 const Navigation = React.memo((props) => {
-  console.log(props);
   const classes = useStyles();
 
   const bounced = debounce((e) => {
