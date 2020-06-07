@@ -4,4 +4,7 @@ export {
   getActor,
   setActor,
   clearActor,
+  setCurrentPage,
+  scrolled,
+  setScrolled,
 } from "./actors";

@@ -32,3 +32,24 @@ export const clearActor = () => {
     type: actionTypes.CLEAR_ACTOR_DATA,
   };
 };
+
+export const setCurrentPage = (page) => {
+  return {
+    type: actionTypes.SET_CURRENT_PAGE,
+    currentPage: page,
+  };
+};
+
+export const scrolled = (page) => {
+  return {
+    type: actionTypes.SCROLLED,
+    page: page,
+  };
+};
+
+export const setScrolled = (data) => {
+  return {
+    type: actionTypes.SET_SCROLLED,
+    data: data,
+  };
+};
