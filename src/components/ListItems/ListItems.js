@@ -25,7 +25,7 @@ const ListItems = React.memo((props) => {
   }
 
   const data = info
-    .filter((item) => Boolean(item.poster_path ?? item.profile_path))
+    // .filter((item) => Boolean(item.poster_path ?? item.profile_path))
     .map((item) => {
       const image = item.poster_path ?? item.profile_path;
       const title = item.name ?? item.title;

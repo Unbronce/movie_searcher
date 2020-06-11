@@ -5,8 +5,10 @@ import {
   Grid,
   Paper,
   Typography,
-  ButtonBase,
+  Card,
+  CardMedia,
 } from "@material-ui/core";
+import Skeleton from "@material-ui/lab/Skeleton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,6 +29,10 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "100%",
     maxHeight: "100%",
   },
+  card: {
+    maxWidth: 345,
+    marginBottom: "30px",
+  },
 }));
 
 const DetailPage = (props) => {
@@ -36,13 +42,19 @@ const DetailPage = (props) => {
       <Paper className={classes.paper}>
         <Grid container spacing={2}>
           <Grid item>
-            <ButtonBase className={classes.image}>
-              <img
-                className={classes.img}
-                alt={props.alt}
-                src={`https://image.tmdb.org/t/p/w500/${props.image}`}
-              />
-            </ButtonBase>
+            <Card className={classes.card}>
+              <CardMedia>
+                {props.image ? (
+                  <img
+                    className={classes.img}
+                    alt={props.alt}
+                    src={`https://image.tmdb.org/t/p/w500/${props.image}`}
+                  />
+                ) : (
+                  <Skeleton variant="rect" height={500} width={345} />
+                )}
+              </CardMedia>
+            </Card>
           </Grid>
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>

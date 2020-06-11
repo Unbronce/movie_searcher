@@ -8,6 +8,7 @@ import {
   CardMedia,
   Typography,
 } from "@material-ui/core";
+import Skeleton from "@material-ui/lab/Skeleton";
 
 const useStyles = makeStyles({
   root: {
@@ -22,13 +23,17 @@ const CardInfo = React.memo((props) => {
     <>
       <Card className={classes.root} onClick={props.clicked}>
         <CardActionArea>
-          <CardMedia
-            height="500"
-            component="img"
-            alt={props.alt}
-            image={`https://image.tmdb.org/t/p/w500/${props.image}`}
-            title={props.title}
-          />
+          {props.image ? (
+            <CardMedia
+              height="500"
+              component="img"
+              alt={props.alt}
+              image={`https://image.tmdb.org/t/p/w500/${props.image}`}
+              title={props.title}
+            />
+          ) : (
+            <Skeleton variant="rect" height={500} width={345} />
+          )}
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               {props.title}
